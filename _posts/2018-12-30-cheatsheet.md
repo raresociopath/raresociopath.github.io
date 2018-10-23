@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Markdown Cheatsheet Demo"
+title: "Cheatsheet"
 comments: true
 description: "Markdown Cheatsheet Demo..."
 keywords: "markdown, typography components, dummy content"
