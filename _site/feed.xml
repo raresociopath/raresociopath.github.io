@@ -5,8 +5,8 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Oct 2018 13:09:11 +0300</pubDate>
-    <lastBuildDate>Tue, 23 Oct 2018 13:09:11 +0300</lastBuildDate>
+    <pubDate>Tue, 23 Oct 2018 13:42:12 +0300</pubDate>
+    <lastBuildDate>Tue, 23 Oct 2018 13:42:12 +0300</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
@@ -41,18 +41,30 @@ But how does it work, how should you use it, why it might help you as well?&lt;/
     
       <item>
         <title>Hello world?</title>
-        <description>&lt;p&gt;Hello world! First thing every programmer will ever do.
-How does the hello world for this blog looks like you ask?
-Well, let’s put here how this blog works then.&lt;/p&gt;
+        <description>&lt;p&gt;Hello world! 
+Is that the first thing every IT person starts with?&lt;/p&gt;
 
 &lt;h3 id=&quot;optimal-solution&quot;&gt;Optimal solution.&lt;/h3&gt;
+
+&lt;p&gt;While setting up this blog, I started to think about how my thinking changed in terms of doing things.
+If I would have started this blog 7 years ago my hello world would have started differently.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-changed-you-ask&quot;&gt;What changed you ask?&lt;/h2&gt;
 
 &lt;p&gt;Working for outsoucing companies is cool in one way. They make you think in terms of time.
 You don’t need complicated solutions for thinks that just don’t require that.&lt;/p&gt;
 
 &lt;p&gt;I could definetely create a blog in java from scratch. Put an application server to work and deploy it there.
-But does it make sense to spend time on this?
-My answer is no. Instead I choose to go with github pages that don’t require anything else than a template.
+But does it make sense to spend time on this?&lt;/p&gt;
+
+&lt;p&gt;My approche on chosing is as follows?&lt;/p&gt;
+
+&lt;p&gt;When you are an experienced developer/devops you won’t spend time on things that you already know.
+Working for startups,&lt;/p&gt;
+
+&lt;p&gt;What&lt;/p&gt;
+
+&lt;p&gt;My answer is no. Instead I choose to go with github pages that don’t require anything else than a template.
 So my optimal solution for things like a technical blog is&lt;/p&gt;
 
 &lt;h3 id=&quot;what-is-github-pages-and-how-to-create-your-first-tech-blog-in-3-steps&quot;&gt;What is github pages and how to create your first tech blog in 3 steps?&lt;/h3&gt;
