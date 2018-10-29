@@ -112,6 +112,6 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
 
 
 For a full example follow this link:
-<a href="https://github.com/raresociopath/ansible-layout-example" >Full example</a>
+<a href="https://github.com/raresociopath/ansible-layout-example" target="_blank">Full example</a>
 
 <div class="divider"></div>
