@@ -6,16 +6,24 @@ comments: true
 keywords: "Hello world, rare sociopath, raresociopath, blog, hello, world, article"
 ---
 
-Hello world! 
-Is that the first thing every IT person starts with?
+Alright, yeah, just like everyone else I've decided to set-up a technical blog.
+*Why?* Well, first of all because I'm getting the same questions about my opinion on doing things all over again.
+I don't want to repeat myself cause... it's just absorbing my time. Instead, I will just add a couple of answers here and 
+put some blueprints with my approach on doing things. Hope it's worth it.
 
 
 ### Optimal solution.
 
-While setting up this blog, I started to think about how my thinking changed in terms of doing things.
-If I would have started this blog 7 years ago my hello world would have started differently.
+While setting up this blog, I started to think about how I've changed during my 7 years of writing code.
 
-## What changed you ask?
+5 years ago I would've spend a couple of days on setting up a blog, writing things from scratch, 
+configuring the http servers, the colors and so on... 
+And now... I choose not to spend time on things that just don't require that.
+A good tech blog is good content, not good design. So, instead of spending time I went with github pages,
+downloaded a template and in 5 minutes I'm already writing this article.
+I think progressing as a developer, administrator or business person shouldn't be only in terms of 
+knowing how to do things but also on how to organize your time in doing things.
+
 
 Working for outsoucing companies is cool in one way. They make you think in terms of time.
 You don't need complicated solutions for thinks that just don't require that.

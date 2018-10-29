@@ -8,10 +8,8 @@ Hi, my name is Ion, 23 year's old computer engineer. Currently living in Chisina
 I started programming at the age of 15. Before that I just loved to brake computers and understand
 how they work. 
 
-OK, ok, if you're not that patient to read everything here's my <a href="https://github.com/raresociopath/">code</a>.
-
 ## Mission
-**The mission of this blog is to show who am I in terms of technologies.**
+**The mission of this blog is to show who I am in terms of technologies.**
 Here you'll find articles beggining with what I do when I get a brand clean computer to how I architect 
 big, scalable projects from both programming and devops perspective, and articles about how I think things should look like. ;)
 Enjoy and have a good day!
