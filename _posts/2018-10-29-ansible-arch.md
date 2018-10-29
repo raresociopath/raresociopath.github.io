@@ -57,7 +57,9 @@ Jenkins and so on.
 ```
 
 # Dynamic inventories
-Read more here: <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script" target="_blank">here.</a>
+
+AWS infrastructure is dynamic and so should be your scripts. You should never worry about the change of IP’s that’s why I recommend the use of dynamic inventories and good groupings.
+
 ```
 inventories/aws/
 ├── ec2.ini
@@ -76,7 +78,11 @@ tag_Env_dev/
 
 ```
 
+1. More about dynamic inventories <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script" target="_blank">here.</a>
+
+
 ## Entry point
+
 
 setup.yml is the entry point of your ansible scripts, 
 that's why it should be as clean as possible.
@@ -99,14 +105,7 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
 ```
 
 
-## Ansible dynamic inventories
-
-AWS infrastructure is dynamic and so should be your scripts.
-You should never worry about the change of IP's that's why I recommend the use of dynamic inventories
-and good groupings.
-
-Read more about Dynamic inventories here:
-1. <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script">AWS EC2 External Inventory Script</a>
-
+For a full example follow this link:
+<a href="https://github.com/raresociopath/ansible-layout-example" >Full example</a>
 
 <div class="divider"></div>
