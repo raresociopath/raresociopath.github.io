@@ -54,6 +54,14 @@ Worked for at least 10 big projects.
 > "Quite frankly, I don't like you humans. After what you all have done,
 I find being 'inhuman' a compliment."
 
+<div class="divider"></div>
+
+## Contact
+
+1. Phone number: +373 78 199 650
+2. Email: raresociopath@gmail.com
+
+
 
 
  
