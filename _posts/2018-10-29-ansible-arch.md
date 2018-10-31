@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ansible with AWS: Best Practices."
+title: "Ansible/AWS: Best Practices."
 comments: true
 description: "Ansible architecture"
 keywords: "markdown, typography components, dummy content"
