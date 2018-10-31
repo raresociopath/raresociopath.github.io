@@ -18,13 +18,10 @@ This best practices are for big projects.
 I guess the first best practice with Jenkins is that you should not edit anything directly from Jenkins, not create jobs or folders.
 Everything should be automated. 
 
-```
-#The two repositories you shoud care about
+## The Jenkins Repos ( tjp )
+1. <a href="https://github.com/raresociopath/jenkins-pipeline-library.git">jenkins-pipeline-library</a>
+2. <a href="https://github.com/raresociopath/jenkins-jobs.git">jenkins-jobs</a>
 
-1) jenkins-pipeline-libraries
-2) jenkins-jobs
-
-```
 
 ## Mandatory plugins:
 
@@ -42,6 +39,9 @@ Go to Manage Jenkins -> Configure System
 
 Global Pipeline Libraries
 Project repository jenkins-pipeline-libraries
+
+
+![Jenkins](/pics/jenkins1.png)
 
 ## Start the seed job
 
