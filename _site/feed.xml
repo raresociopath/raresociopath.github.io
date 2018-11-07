@@ -5,8 +5,8 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Nov 2018 17:12:54 +0200</pubDate>
-    <lastBuildDate>Wed, 07 Nov 2018 17:12:54 +0200</lastBuildDate>
+    <pubDate>Wed, 07 Nov 2018 17:39:18 +0200</pubDate>
+    <lastBuildDate>Wed, 07 Nov 2018 17:39:18 +0200</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
@@ -117,6 +117,8 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
         <link>http://localhost:4000/2018/terraform-best-practices/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/terraform-best-practices/</guid>
         
+        
+        <category>devops</category>
         
       </item>
     
@@ -343,6 +345,124 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
         <guid isPermaLink="true">http://localhost:4000/2018/k8s-cluster/</guid>
         
         
+        <category>devops</category>
+        
+      </item>
+    
+      <item>
+        <title>Provisioning EKS with Terraform</title>
+        <description>&lt;p&gt;Read before proceding:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot; target=&quot;_blank&quot;&gt; What is ansible&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/&quot; target=&quot;_blank&quot;&gt; What is kubernetes &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/kubernetes/kops/blob/master/README.md&quot; target=&quot;_blank&quot;&gt;What is Kops &lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So, we are gonna write ansible scripts to provision k8s with the help of kops.&lt;/p&gt;
+
+&lt;p&gt;The code is &lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt; here &lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;k8s-ansible/
+├── ansible.cfg
+├── cluster.conf.d
+├── create-cluster.yaml
+├── delete-cluster.yaml
+├── group_vars
+├── inventory
+├── kops-clusters
+├── README.md
+├── roles
+├── utils
+└── validate-cluster.yaml
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;create-cluster&quot;&gt;Create cluster&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+- include_role:
+    name: base
+
+- name: &quot;Create cluster &quot;
+  shell: &amp;gt;
+    kops create cluster 
+    --cloud-labels=&quot;Team=MyTeam&quot;
+    --admin-access=&amp;lt;to be changed&amp;gt;/32
+    --kubernetes-version=
+    --zones=
+    --dns-zone=
+    --master-count=
+    --master-size=
+    --master-volume-size=
+    --cloud=aws
+    --output yaml
+    --state=s3://
+    --node-size=
+    --node-count=
+    --node-volume-size=
+    --topology=public
+    --encrypt-etcd-storage
+    --networking=canal
+- name: &quot;Apply extra confs on cluster&quot;
+  shell: &amp;gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=cluster.conf.d
+    --output=./tmp-.yaml
+    &amp;amp;&amp;amp;
+    kops replace --name  --state=s3:// -f ./tmp-.yaml
+    &amp;amp;&amp;amp;
+    rm -f ./tmp-.yaml
+- name: &quot;Apply extra confs on nodes&quot;
+  shell: &amp;gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=nodes.conf.d
+    --component=ig
+    --output=./tmp--nodes.yaml
+    &amp;amp;&amp;amp;
+    kops replace --name  --state=s3:// -f ./tmp--nodes.yaml
+    &amp;amp;&amp;amp;
+    rm -f ./tmp--nodes.yaml
+- name: &quot;Apply extra confs on master&quot;
+  shell: &amp;gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=master.conf.d
+    --component=master-
+    --output=./tmp--master-.yaml
+    &amp;amp;&amp;amp;
+    kops replace --name  --state=s3:// -f ./tmp--master-.yaml
+    &amp;amp;&amp;amp;
+    rm -f ./tmp--master-.yaml
+  with_items: &quot;&quot;
+  loop_control:
+    index_var: index
+  when: index &amp;lt; master_count
+
+- name: &quot;Apply plan creation for cluster &quot;
+  shell: &amp;gt;
+    kops update cluster
+    --name 
+    --state=s3://
+    --yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For a full example follow this link:
+&lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/eks-terraform/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/eks-terraform/</guid>
+        
+        
+        <category>devops</category>
+        
       </item>
     
       <item>
@@ -459,43 +579,7 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
         <guid isPermaLink="true">http://localhost:4000/2018/ansible-arch/</guid>
         
         
-      </item>
-    
-      <item>
-        <title>The one and only repository for devops</title>
-        <description>&lt;p&gt;A one folder that does it all.
-I suggest not to spread the provisioning and deployment scripts,
-instead keep them in one repository.
-This way, you’re not gonna get lost, and so your new devops.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;project-name&amp;gt;/
-├── ansible # Read more here:
-├── k8s # Kubernetes natives
-├── terraform # Provisioning scripts
-└── README.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/the_devops_repository/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/the_devops_repository/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Spring Boot | Microservices architecture</title>
-        <description>&lt;p&gt;Tools&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;PAC or Asbru&lt;/li&gt;
-  &lt;li&gt;Portainer&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/spring-boot/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/spring-boot/</guid>
-        
+        <category>devops</category>
         
       </item>
     
@@ -540,6 +624,66 @@ This way, you’re not gonna get lost, and so your new devops.&lt;/p&gt;
         <guid isPermaLink="true">http://localhost:4000/2018/localhost/</guid>
         
         
+        <category>top</category>
+        
+      </item>
+    
+      <item>
+        <title>Spring Boot | Microservices architecture</title>
+        <description>&lt;p&gt;Tools&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;PAC or Asbru&lt;/li&gt;
+  &lt;li&gt;Portainer&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/spring-boot/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/spring-boot/</guid>
+        
+        
+        <category>prog</category>
+        
+      </item>
+    
+      <item>
+        <title>Tools to ease up server management</title>
+        <description>&lt;p&gt;Tools&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;PAC or Asbru&lt;/li&gt;
+  &lt;li&gt;Portainer&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/devops-tools/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/devops-tools/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>The one and only repository for devops</title>
+        <description>&lt;p&gt;A one folder that does it all.
+I suggest not to spread the provisioning and deployment scripts,
+instead keep them in one repository.
+This way, you’re not gonna get lost, and so your new devops.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;project-name&amp;gt;/
+├── ansible # Read more here:
+├── k8s # Kubernetes natives
+├── terraform # Provisioning scripts
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/the_devops_repository/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/the_devops_repository/</guid>
+        
+        
+        <category>devops</category>
+        
       </item>
     
       <item>
@@ -570,68 +714,7 @@ But how does it work, how should you use it, why it might help you as well?&lt;/
         <guid isPermaLink="true">http://localhost:4000/2018/kubernetes/</guid>
         
         
-      </item>
-    
-      <item>
-        <title>Jenkins pipelines: Best Practices.</title>
-        <description>&lt;p&gt;Jenkins… Jenkins.. Jenkins..
-Such a simple tool that has changed everything.&lt;/p&gt;
-
-&lt;p&gt;One of the most important part in the CI/CD architecture.&lt;/p&gt;
-
-&lt;p&gt;Let’s see what we can do about jenkins.&lt;/p&gt;
-
-&lt;p&gt;This best practices are for big projects.&lt;/p&gt;
-
-&lt;p&gt;I guess the first best practice with Jenkins is that you should not edit anything directly from Jenkins, not create jobs or folders.
-Everything should be automated.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-jenkins-repos--tjp-&quot;&gt;The Jenkins Repos ( tjp )&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/raresociopath/jenkins-pipeline-library.git&quot;&gt;jenkins-pipeline-library&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/raresociopath/jenkins-jobs.git&quot;&gt;jenkins-jobs&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;mandatory-plugins&quot;&gt;Mandatory plugins:&lt;/h2&gt;
-
-&lt;p&gt;Job Pipeline&lt;/p&gt;
-
-&lt;h2 id=&quot;seed-job&quot;&gt;Seed Job&lt;/h2&gt;
-
-&lt;h2 id=&quot;jenkins-pipeline-library&quot;&gt;Jenkins pipeline library&lt;/h2&gt;
-&lt;p&gt;Import the jenkins-pipeline-library&lt;/p&gt;
-
-&lt;p&gt;Go to Manage Jenkins -&amp;gt; Configure System&lt;/p&gt;
-
-&lt;p&gt;Global Pipeline Libraries
-Project repository jenkins-pipeline-libraries&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/jenkins1.png&quot; alt=&quot;Jenkins&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;start-the-seed-job&quot;&gt;Start the seed job&lt;/h2&gt;
-
-&lt;p&gt;The seed job is the only job that you will run manually.
-It should pick up all the jobs from the jenkins-jobs repository and create all the other jobs.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/jenkins-pipelines/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/jenkins-pipelines/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Terraform/Ansible - provision Jenkins and gitlab</title>
-        <description>&lt;h2 id=&quot;provision-jenkins-and-gitlab&quot;&gt;Provision jenkins and gitlab&lt;/h2&gt;
-
-&lt;p&gt;Code here:
-https://github.com/raresociopath/provision-jenkins-gitlab&lt;/p&gt;
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/jenkins-gitlab/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/jenkins-gitlab/</guid>
-        
+        <category>devops</category>
         
       </item>
     

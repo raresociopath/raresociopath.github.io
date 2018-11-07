@@ -4,6 +4,7 @@ title: "Kubernetes, Helm and Jenkins"
 description: "Ansible has changed my live and does i changed its life."
 comments: true
 keywords: "ansible, devops, tools, automation, system, administration, cloud, aws"
+category: devops
 ---
 
 Ansible, ansible, ansible, guess everyone has heard at least about Ansible.

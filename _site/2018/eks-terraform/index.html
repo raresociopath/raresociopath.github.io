@@ -1,0 +1,84 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title> Provisioning EKS with Terraform | Raresociopath </title> <meta name="description" content=" Ansible architecture "> <meta name="keywords" content="markdown, typography components, dummy content"> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <!-- Social: Facebook / Open Graph --> <meta property="og:type" content="article"> <meta property="article:author" content="Munteanu Ion"> <meta property="article:section" content="devops"> <meta property="article:tag" content="markdown, typography components, dummy content"> <meta property="article:published_time" content="2018-10-29 00:00:00 +0200"> <meta property="og:url" content="http://localhost:4000/2018/eks-terraform/"> <meta property="og:title" content=" Provisioning EKS with Terraform | Raresociopath "> <meta property="og:image" content="http://localhost:4000"> <meta property="og:description" content=" Ansible architecture "> <meta property="og:site_name" content="Munteanu Ion"> <meta property="og:locale" content="en_US"> <!-- Social: Twitter --> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:site" content=""> <meta name="twitter:title" content=" Provisioning EKS with Terraform | Raresociopath "> <meta name="twitter:description" content=" Ansible architecture "> <meta name="twitter:image:src" content="http://localhost:4000"> <!-- Social: Google+ / Schema.org --> <meta itemprop="name" content=" Provisioning EKS with Terraform | Raresociopath "> <meta itemprop="description" content=" Ansible architecture "> <meta itemprop="image" content="http://localhost:4000"> <!-- Canonical link tag --> <link rel="canonical" href="http://localhost:4000/2018/eks-terraform/"> <link rel="alternate" type="application/rss+xml" title="Raresociopath" href="http://localhost:4000/feed.xml"> <!-- rel prev and next --> <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css"> </head> <body> <main class="wrapper"> <header class="site-header"> <nav class="nav"> <div class="container"> <h1 class="logo"><a href="http://localhost:4000/">Rare<span>sociopath</span></a></h1> <ul class="navbar"> <li><a href="http://localhost:4000/">Articles</a></li> <li><a href="http://localhost:4000/about">About me</a></li> <li><a href="http://localhost:4000/books">Books</a></li> </ul> </div> </nav> </header> <article class="post container" itemscope itemtype="http://schema.org/BlogPosting"> <header class="post-header"> <p class="post-meta"><time datetime="2018-10-29T00:00:00+02:00" itemprop="datePublished">Oct 29, 2018</time></p> <h1 class="post-title" itemprop="name headline">Provisioning EKS with Terraform</h1> </header> <div class="post-content" itemprop="articleBody"> <p>Read before proceding:</p> <ol> <li><a href="https://docs.ansible.com/ansible/latest/index.html" target="_blank"> What is ansible</a></li> <li><a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/" target="_blank"> What is kubernetes </a></li> <li><a href="https://github.com/kubernetes/kops/blob/master/README.md" target="_blank">What is Kops </a></li> </ol> <p>So, we are gonna write ansible scripts to provision k8s with the help of kops.</p> <p>The code is <a href="https://github.com/raresociopath/k8s-ansible" target="_blank"> here </a></p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>k8s-ansible/
+├── ansible.cfg
+├── cluster.conf.d
+├── create-cluster.yaml
+├── delete-cluster.yaml
+├── group_vars
+├── inventory
+├── kops-clusters
+├── README.md
+├── roles
+├── utils
+└── validate-cluster.yaml
+
+</code></pre></div></div> <h2 id="create-cluster">Create cluster</h2> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+- include_role:
+    name: base
+
+- name: "Create cluster "
+  shell: &gt;
+    kops create cluster 
+    --cloud-labels="Team=MyTeam"
+    --admin-access=&lt;to be changed&gt;/32
+    --kubernetes-version=
+    --zones=
+    --dns-zone=
+    --master-count=
+    --master-size=
+    --master-volume-size=
+    --cloud=aws
+    --output yaml
+    --state=s3://
+    --node-size=
+    --node-count=
+    --node-volume-size=
+    --topology=public
+    --encrypt-etcd-storage
+    --networking=canal
+- name: "Apply extra confs on cluster"
+  shell: &gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=cluster.conf.d
+    --output=./tmp-.yaml
+    &amp;&amp;
+    kops replace --name  --state=s3:// -f ./tmp-.yaml
+    &amp;&amp;
+    rm -f ./tmp-.yaml
+- name: "Apply extra confs on nodes"
+  shell: &gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=nodes.conf.d
+    --component=ig
+    --output=./tmp--nodes.yaml
+    &amp;&amp;
+    kops replace --name  --state=s3:// -f ./tmp--nodes.yaml
+    &amp;&amp;
+    rm -f ./tmp--nodes.yaml
+- name: "Apply extra confs on master"
+  shell: &gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=master.conf.d
+    --component=master-
+    --output=./tmp--master-.yaml
+    &amp;&amp;
+    kops replace --name  --state=s3:// -f ./tmp--master-.yaml
+    &amp;&amp;
+    rm -f ./tmp--master-.yaml
+  with_items: ""
+  loop_control:
+    index_var: index
+  when: index &lt; master_count
+
+- name: "Apply plan creation for cluster "
+  shell: &gt;
+    kops update cluster
+    --name 
+    --state=s3://
+    --yes
+</code></pre></div></div> <p>For a full example follow this link: <a href="https://github.com/raresociopath/k8s-ansible" target="_blank">Full example</a></p> <div class="divider"></div> </div> </article> <footer class="site-footer"> <div class="container"> <small class="block">&copy; 2018 Munteanu Ion </small> </div> </footer> </main> <script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-XXXXX-XX']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script> </body> </html>

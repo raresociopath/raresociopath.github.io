@@ -4,6 +4,7 @@ title: "The one and only repository for devops"
 description: "One folder for all the needs"
 comments: true
 keywords: "ansible, devops, tools, automation, system, administration, cloud, aws"
+category: devops
 ---
 
 A one folder that does it all.

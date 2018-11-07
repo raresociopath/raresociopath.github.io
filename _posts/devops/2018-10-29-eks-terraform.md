@@ -1,9 +1,10 @@
 ---
 layout: post
-title: "Provisioning k8s cluster with Ansible and Kops on AWS"
+title: "Provisioning EKS with Terraform"
 comments: true
 description: "Ansible architecture"
 keywords: "markdown, typography components, dummy content"
+category: devops
 ---
 
 Read before proceding:

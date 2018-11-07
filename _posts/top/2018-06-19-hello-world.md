@@ -4,6 +4,7 @@ title: "Hello world?"
 description: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain.."
 comments: true
 keywords: "Hello world, rare sociopath, raresociopath, blog, hello, world, article"
+category: top
 ---
 
 Alright, yeah, just like everyone else I've decided to set-up a technical blog.

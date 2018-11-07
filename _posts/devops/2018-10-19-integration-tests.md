@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "Terraform/AWS Best practices."
+title: "Integration tests: Kubernetes vs Docker compose"
 comments: true
-description: "Terraform best practices"
+description: "Ansible architecture"
 keywords: "markdown, typography components, dummy content"
+category: devops
 ---
-Alright, I'm not gonna write about what Terraform is and why it is great because 
+Alright, I'm not gonna write about what Ansible is and why it is great because 
 the official documentation is doing that perfectly.
 
 Instead, I'm going to leave here a couple of notes about best practices using Ansible with AWS.
