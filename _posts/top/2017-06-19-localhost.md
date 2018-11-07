@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Localhost set-up"
-description: "Devops tools that will help you a lot"
+title: "Automated localhost set-up"
+description: "Automation of the localhost, configurations of tools used locally"
 comments: true
 keywords: "ansible, devops, tools, automation, system, administration, cloud, aws"
 category: top

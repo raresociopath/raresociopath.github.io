@@ -5,8 +5,8 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Nov 2018 17:39:18 +0200</pubDate>
-    <lastBuildDate>Wed, 07 Nov 2018 17:39:18 +0200</lastBuildDate>
+    <pubDate>Wed, 07 Nov 2018 18:51:35 +0200</pubDate>
+    <lastBuildDate>Wed, 07 Nov 2018 18:51:35 +0200</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
@@ -350,7 +350,7 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
       </item>
     
       <item>
-        <title>Provisioning EKS with Terraform</title>
+        <title>Provisioning Autoscalable EKS with Terraform</title>
         <description>&lt;p&gt;Read before proceding:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot; target=&quot;_blank&quot;&gt; What is ansible&lt;/a&gt;&lt;/li&gt;
@@ -584,51 +584,6 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
       </item>
     
       <item>
-        <title>Localhost set-up</title>
-        <description>&lt;h3 id=&quot;fedora&quot;&gt;Fedora&lt;/h3&gt;
-
-&lt;p&gt;I work on Fedora.&lt;/p&gt;
-
-&lt;h3 id=&quot;i3-window-manager&quot;&gt;i3 window manager&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://i3wm.org/&quot;&gt;i3 window manager&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;i3lock, i3blocks&lt;/p&gt;
-
-&lt;h3 id=&quot;vim&quot;&gt;vim&lt;/h3&gt;
-
-&lt;h3 id=&quot;terminator&quot;&gt;Terminator&lt;/h3&gt;
-
-&lt;h3 id=&quot;asbru-cm&quot;&gt;Asbru cm&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/asbru-cm/asbru-cm&quot;&gt;Asbru CM&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;docker&quot;&gt;Docker&lt;/h3&gt;
-
-&lt;h3 id=&quot;portainer&quot;&gt;Portainer&lt;/h3&gt;
-
-&lt;h3 id=&quot;programming&quot;&gt;Programming&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Eclipse&lt;/li&gt;
-  &lt;li&gt;vim&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/localhost/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/localhost/</guid>
-        
-        
-        <category>top</category>
-        
-      </item>
-    
-      <item>
         <title>Spring Boot | Microservices architecture</title>
         <description>&lt;p&gt;Tools&lt;/p&gt;
 &lt;ol&gt;
@@ -680,6 +635,19 @@ This way, you’re not gonna get lost, and so your new devops.&lt;/p&gt;
         <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
         <link>http://localhost:4000/2018/the_devops_repository/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/the_devops_repository/</guid>
+        
+        
+        <category>devops</category>
+        
+      </item>
+    
+      <item>
+        <title>Spin-up a Jenkins instance with Terraform</title>
+        <description>
+</description>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/spin-up-jenkins-terraform/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/spin-up-jenkins-terraform/</guid>
         
         
         <category>devops</category>

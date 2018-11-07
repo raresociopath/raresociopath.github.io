@@ -6,18 +6,14 @@ comments: true
 keywords: "ansible, devops, tools, automation, system, administration, cloud, aws"
 category: devops
 ---
+## Jenkins Driven 
 
-Jenkins... Jenkins.. Jenkins..
-Such a simple tool that has changed everything.
+Jenkins remains to be the most used CI/CD tool.
+Don't really remember a company or project where I didn't have to deal with Jenkins.
+That's why I've decided to leave here some of the best things
 
-One of the most important part in the CI/CD architecture.
+## Jenkins instance
 
-Let's see what we can do about jenkins.
-
-This best practices are for big projects.
-
-I guess the first best practice with Jenkins is that you should not edit anything directly from Jenkins, not create jobs or folders.
-Everything should be automated. 
 
 ## The Jenkins Repos ( tjp )
 1. <a href="https://github.com/raresociopath/jenkins-pipeline-library.git">jenkins-pipeline-library</a>
