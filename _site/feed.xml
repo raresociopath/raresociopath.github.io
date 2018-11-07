@@ -5,12 +5,545 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Oct 2018 14:38:28 +0300</pubDate>
-    <lastBuildDate>Fri, 26 Oct 2018 14:38:28 +0300</lastBuildDate>
+    <pubDate>Wed, 07 Nov 2018 17:03:50 +0200</pubDate>
+    <lastBuildDate>Wed, 07 Nov 2018 17:03:50 +0200</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
-        <title>I love ansible.</title>
+        <title>Terraform/AWS Best practices.</title>
+        <description>&lt;p&gt;Alright, I’m not gonna write about what Terraform is and why it is great because 
+the official documentation is doing that perfectly.&lt;/p&gt;
+
+&lt;p&gt;Instead, I’m going to leave here a couple of notes about best practices using Ansible with AWS.&lt;/p&gt;
+
+&lt;p&gt;So, If you don’t know what Ansible is and what it is used for please follow this link first:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot;&gt;Official Ansible documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;my-ansible-layout&quot;&gt;My Ansible layout&lt;/h2&gt;
+
+&lt;p&gt;If you are struggling with finding a good layout that will fit your project
+here are a couple of blueprints.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Keep Ansible layout as simple as possible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An example that just works perfectly.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible/
+├── inventories
+├── playbooks
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Do not use project specific names in naming ansible directories.
+We want Ansible scripts to be flexible.
+Jenkins and so on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;what-next&quot;&gt;What next?&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── inventories
+│   └── aws
+│       ├── ec2.ini
+│       ├── ec2.py
+│       └── group_vars
+├── playbooks
+│   ├── files
+│   │   ├── ssh_keys
+│   │   └── ...
+│   ├── roles
+│   │   ├── base
+│   │   ├── java
+│   │   └── ...
+│   ├── setup_base.yaml
+│   └── setup.yaml
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;dynamic-inventories&quot;&gt;Dynamic inventories&lt;/h1&gt;
+
+&lt;p&gt;AWS infrastructure is dynamic and so should be your scripts. You should never worry about the change of IP’s that’s why I recommend the use of dynamic inventories and good groupings.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;inventories/aws/
+├── ec2.ini
+├── ec2.py
+└── group_vars
+    ├── all # Project variables
+    ├── tag_env_dev  # Dev environment variables
+    └── tag_env_prod # Prod environment variables
+
+# Inside tag_env_dev
+
+tag_Env_dev/
+├── vars.yaml
+└── vault.yaml
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;More about dynamic inventories &lt;a href=&quot;https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script&quot; target=&quot;_blank&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;entry-point&quot;&gt;Entry point&lt;/h2&gt;
+
+&lt;p&gt;setup.yml is the entry point of your ansible scripts, 
+that’s why it should be as clean as possible.
+Try to only import plays in here.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+- import_playbook: setup_base.yaml
+- import_playbook: setup_redis.yaml
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;running-ansible-scripts-tagging&quot;&gt;Running ansible scripts. Tagging&lt;/h2&gt;
+&lt;p&gt;This command should do everything.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible-playbook -i inventories/aws playbooks/setup.yaml
+ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=base
+ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For a full example follow this link:
+&lt;a href=&quot;https://github.com/raresociopath/ansible-layout-example&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/terraform-best-practices/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/terraform-best-practices/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Kafka posibilities</title>
+        <description>&lt;p&gt;Alright, I’m not gonna write about what Ansible is and why it is great because 
+the official documentation is doing that perfectly.&lt;/p&gt;
+
+&lt;p&gt;Instead, I’m going to leave here a couple of notes about best practices using Ansible with AWS.&lt;/p&gt;
+
+&lt;p&gt;So, If you don’t know what Ansible is and what it is used for please follow this link first:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot;&gt;Official Ansible documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;my-ansible-layout&quot;&gt;My Ansible layout&lt;/h2&gt;
+
+&lt;p&gt;If you are struggling with finding a good layout that will fit your project
+here are a couple of blueprints.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Keep Ansible layout as simple as possible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An example that just works perfectly.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible/
+├── inventories
+├── playbooks
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Do not use project specific names in naming ansible directories.
+We want Ansible scripts to be flexible.
+Jenkins and so on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;what-next&quot;&gt;What next?&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── inventories
+│   └── aws
+│       ├── ec2.ini
+│       ├── ec2.py
+│       └── group_vars
+├── playbooks
+│   ├── files
+│   │   ├── ssh_keys
+│   │   └── ...
+│   ├── roles
+│   │   ├── base
+│   │   ├── java
+│   │   └── ...
+│   ├── setup_base.yaml
+│   └── setup.yaml
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;dynamic-inventories&quot;&gt;Dynamic inventories&lt;/h1&gt;
+
+&lt;p&gt;AWS infrastructure is dynamic and so should be your scripts. You should never worry about the change of IP’s that’s why I recommend the use of dynamic inventories and good groupings.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;inventories/aws/
+├── ec2.ini
+├── ec2.py
+└── group_vars
+    ├── all # Project variables
+    ├── tag_env_dev  # Dev environment variables
+    └── tag_env_prod # Prod environment variables
+
+# Inside tag_env_dev
+
+tag_Env_dev/
+├── vars.yaml
+└── vault.yaml
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;More about dynamic inventories &lt;a href=&quot;https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script&quot; target=&quot;_blank&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;entry-point&quot;&gt;Entry point&lt;/h2&gt;
+
+&lt;p&gt;setup.yml is the entry point of your ansible scripts, 
+that’s why it should be as clean as possible.
+Try to only import plays in here.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+- import_playbook: setup_base.yaml
+- import_playbook: setup_redis.yaml
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;running-ansible-scripts-tagging&quot;&gt;Running ansible scripts. Tagging&lt;/h2&gt;
+&lt;p&gt;This command should do everything.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible-playbook -i inventories/aws playbooks/setup.yaml
+ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=base
+ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For a full example follow this link:
+&lt;a href=&quot;https://github.com/raresociopath/ansible-layout-example&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/kafka/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/kafka/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Provisioning k8s cluster with Ansible and Kops on AWS</title>
+        <description>&lt;p&gt;Read before proceding:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot; target=&quot;_blank&quot;&gt; What is ansible&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/&quot; target=&quot;_blank&quot;&gt; What is kubernetes &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/kubernetes/kops/blob/master/README.md&quot; target=&quot;_blank&quot;&gt;What is Kops &lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So, we are gonna write ansible scripts to provision k8s with the help of kops.&lt;/p&gt;
+
+&lt;p&gt;The code is &lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt; here &lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;k8s-ansible/
+├── ansible.cfg
+├── cluster.conf.d
+├── create-cluster.yaml
+├── delete-cluster.yaml
+├── group_vars
+├── inventory
+├── kops-clusters
+├── README.md
+├── roles
+├── utils
+└── validate-cluster.yaml
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;create-cluster&quot;&gt;Create cluster&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+- include_role:
+    name: base
+
+- name: &quot;Create cluster &quot;
+  shell: &amp;gt;
+    kops create cluster 
+    --cloud-labels=&quot;Team=MyTeam&quot;
+    --admin-access=&amp;lt;to be changed&amp;gt;/32
+    --kubernetes-version=
+    --zones=
+    --dns-zone=
+    --master-count=
+    --master-size=
+    --master-volume-size=
+    --cloud=aws
+    --output yaml
+    --state=s3://
+    --node-size=
+    --node-count=
+    --node-volume-size=
+    --topology=public
+    --encrypt-etcd-storage
+    --networking=canal
+- name: &quot;Apply extra confs on cluster&quot;
+  shell: &amp;gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=cluster.conf.d
+    --output=./tmp-.yaml
+    &amp;amp;&amp;amp;
+    kops replace --name  --state=s3:// -f ./tmp-.yaml
+    &amp;amp;&amp;amp;
+    rm -f ./tmp-.yaml
+- name: &quot;Apply extra confs on nodes&quot;
+  shell: &amp;gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=nodes.conf.d
+    --component=ig
+    --output=./tmp--nodes.yaml
+    &amp;amp;&amp;amp;
+    kops replace --name  --state=s3:// -f ./tmp--nodes.yaml
+    &amp;amp;&amp;amp;
+    rm -f ./tmp--nodes.yaml
+- name: &quot;Apply extra confs on master&quot;
+  shell: &amp;gt;
+    ./utils/genClusterConfig.py
+    --cluster-name=
+    --cluster-state=s3://
+    --conf-path=master.conf.d
+    --component=master-
+    --output=./tmp--master-.yaml
+    &amp;amp;&amp;amp;
+    kops replace --name  --state=s3:// -f ./tmp--master-.yaml
+    &amp;amp;&amp;amp;
+    rm -f ./tmp--master-.yaml
+  with_items: &quot;&quot;
+  loop_control:
+    index_var: index
+  when: index &amp;lt; master_count
+
+- name: &quot;Apply plan creation for cluster &quot;
+  shell: &amp;gt;
+    kops update cluster
+    --name 
+    --state=s3://
+    --yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For a full example follow this link:
+&lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/k8s-cluster/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/k8s-cluster/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Ansible/AWS: Best Practices.</title>
+        <description>&lt;p&gt;Alright, I’m not gonna write about what Ansible is and why it is great because 
+the official documentation is doing that perfectly.&lt;/p&gt;
+
+&lt;p&gt;Instead, I’m going to leave here a couple of notes about best practices using Ansible with AWS.&lt;/p&gt;
+
+&lt;p&gt;So, If you don’t know what Ansible is and what it is used for please follow this link first:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot;&gt;Official Ansible documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;ansible-directory-layout-that-always-worked-for-me&quot;&gt;Ansible Directory layout that always worked for me&lt;/h2&gt;
+
+&lt;p&gt;If you are struggling with finding a good layout that will fit your project
+here are a couple of blueprints.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Keep Ansible layout as simple as possible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An example that just works perfectly.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible/
+├── inventories 
+├── playbooks
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Do not use project specific names in naming ansible directories.
+We want Ansible scripts to be flexible.
+Jenkins and so on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;what-next&quot;&gt;What next?&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── inventories
+│   └── aws
+│       ├── ec2.ini
+│       ├── ec2.py
+│       └── group_vars # variables for particular groups
+├── playbooks
+│   ├── files # files needed by some roles
+│   │   ├── ssh_keys
+│   │   └── ...
+│   ├── roles
+│   │   ├── base
+│   │   ├── java
+│   │   └── ...
+│   ├── setup_base.yaml
+│   └── setup.yaml # master playbook 
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;dynamic-inventories&quot;&gt;Dynamic inventories&lt;/h1&gt;
+
+&lt;p&gt;AWS infrastructure is dynamic and so should be your scripts. You should never worry about the change of IP’s that’s why I recommend the use of dynamic inventories and good groupings.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;inventories/aws/
+├── ec2.ini
+├── ec2.py
+└── group_vars
+    ├── all # Project variables
+    ├── tag_env_dev  # Dev environment variables
+    └── tag_env_prod # Prod environment variables
+
+# Inside tag_env_dev
+
+tag_Env_dev/
+├── vars.yaml
+└── vault.yaml
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;More about dynamic inventories &lt;a href=&quot;https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script&quot; target=&quot;_blank&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;master-playbook--master-&quot;&gt;Master playbook ( master )&lt;/h2&gt;
+
+&lt;p&gt;setup.yml is the entry point (master) playbook of your ansible scripts, 
+that’s why it should be as clean as possible.
+Try to only import plays in here.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+- import_playbook: setup_base.yaml
+- import_playbook: setup_redis.yaml
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tags&quot;&gt;TAGS&lt;/h2&gt;
+&lt;p&gt;A very important part of the ansible playbooks is tags.
+My recomendations is not to use tags in roles.
+I use tags only in the high level playbooks and the dynamic inventory tags.&lt;/p&gt;
+
+&lt;h2 id=&quot;running-ansible-scripts-tagging&quot;&gt;Running ansible scripts. Tagging&lt;/h2&gt;
+&lt;p&gt;This command should do everything.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible-playbook -i inventories/aws playbooks/setup.yaml
+ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=base
+ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For a full example follow this link:
+&lt;a href=&quot;https://github.com/raresociopath/ansible-layout-example&quot; target=&quot;_blank&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/ansible-arch/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/ansible-arch/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>The one and only repository for devops</title>
+        <description>&lt;p&gt;A one folder that does it all.
+I suggest not to spread the provisioning and deployment scripts,
+instead keep them in one repository.
+This way, you’re not gonna get lost, and so your new devops.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;project-name&amp;gt;/
+├── ansible # Read more here:
+├── k8s # Kubernetes natives
+├── terraform # Provisioning scripts
+└── README.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/the_devops_repository/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/the_devops_repository/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Spring Boot | Microservices architecture</title>
+        <description>&lt;p&gt;Tools&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;PAC or Asbru&lt;/li&gt;
+  &lt;li&gt;Portainer&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/spring-boot/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/spring-boot/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Localhost set-up</title>
+        <description>&lt;h3 id=&quot;fedora&quot;&gt;Fedora&lt;/h3&gt;
+
+&lt;p&gt;I work on Fedora.&lt;/p&gt;
+
+&lt;h3 id=&quot;i3-window-manager&quot;&gt;i3 window manager&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://i3wm.org/&quot;&gt;i3 window manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;i3lock, i3blocks&lt;/p&gt;
+
+&lt;h3 id=&quot;vim&quot;&gt;vim&lt;/h3&gt;
+
+&lt;h3 id=&quot;terminator&quot;&gt;Terminator&lt;/h3&gt;
+
+&lt;h3 id=&quot;asbru-cm&quot;&gt;Asbru cm&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/asbru-cm/asbru-cm&quot;&gt;Asbru CM&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;docker&quot;&gt;Docker&lt;/h3&gt;
+
+&lt;h3 id=&quot;portainer&quot;&gt;Portainer&lt;/h3&gt;
+
+&lt;h3 id=&quot;programming&quot;&gt;Programming&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Eclipse&lt;/li&gt;
+  &lt;li&gt;vim&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/localhost/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/localhost/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Kubernetes, Helm and Jenkins</title>
         <description>&lt;p&gt;Ansible, ansible, ansible, guess everyone has heard at least about Ansible.
 But how does it work, how should you use it, why it might help you as well?&lt;/p&gt;
 
@@ -33,90 +566,71 @@ But how does it work, how should you use it, why it might help you as well?&lt;/
 &lt;/blockquote&gt;
 </description>
         <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/i-love-ansible/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/i-love-ansible/</guid>
+        <link>http://localhost:4000/2018/kubernetes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/kubernetes/</guid>
         
         
       </item>
     
       <item>
-        <title>Hello world?</title>
-        <description>&lt;p&gt;Hello world! 
-Is that the first thing every IT person starts with?&lt;/p&gt;
+        <title>Jenkins pipelines: Best Practices.</title>
+        <description>&lt;p&gt;Jenkins… Jenkins.. Jenkins..
+Such a simple tool that has changed everything.&lt;/p&gt;
 
-&lt;h3 id=&quot;optimal-solution&quot;&gt;Optimal solution.&lt;/h3&gt;
+&lt;p&gt;One of the most important part in the CI/CD architecture.&lt;/p&gt;
 
-&lt;p&gt;While setting up this blog, I started to think about how my thinking changed in terms of doing things.
-If I would have started this blog 7 years ago my hello world would have started differently.&lt;/p&gt;
+&lt;p&gt;Let’s see what we can do about jenkins.&lt;/p&gt;
 
-&lt;h2 id=&quot;what-changed-you-ask&quot;&gt;What changed you ask?&lt;/h2&gt;
+&lt;p&gt;This best practices are for big projects.&lt;/p&gt;
 
-&lt;p&gt;Working for outsoucing companies is cool in one way. They make you think in terms of time.
-You don’t need complicated solutions for thinks that just don’t require that.&lt;/p&gt;
+&lt;p&gt;I guess the first best practice with Jenkins is that you should not edit anything directly from Jenkins, not create jobs or folders.
+Everything should be automated.&lt;/p&gt;
 
-&lt;p&gt;I could definetely create a blog in java from scratch. Put an application server to work and deploy it there.
-But does it make sense to spend time on this?&lt;/p&gt;
+&lt;h2 id=&quot;the-jenkins-repos--tjp-&quot;&gt;The Jenkins Repos ( tjp )&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/raresociopath/jenkins-pipeline-library.git&quot;&gt;jenkins-pipeline-library&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/raresociopath/jenkins-jobs.git&quot;&gt;jenkins-jobs&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;My approche on chosing is as follows?&lt;/p&gt;
+&lt;h2 id=&quot;mandatory-plugins&quot;&gt;Mandatory plugins:&lt;/h2&gt;
 
-&lt;p&gt;When you are an experienced developer/devops you won’t spend time on things that you already know.
-Working for startups,&lt;/p&gt;
+&lt;p&gt;Job Pipeline&lt;/p&gt;
 
-&lt;p&gt;What&lt;/p&gt;
+&lt;h2 id=&quot;seed-job&quot;&gt;Seed Job&lt;/h2&gt;
 
-&lt;p&gt;My answer is no. Instead I choose to go with github pages that don’t require anything else than a template.
-So my optimal solution for things like a technical blog is&lt;/p&gt;
+&lt;h2 id=&quot;jenkins-pipeline-library&quot;&gt;Jenkins pipeline library&lt;/h2&gt;
+&lt;p&gt;Import the jenkins-pipeline-library&lt;/p&gt;
 
-&lt;h3 id=&quot;what-is-github-pages-and-how-to-create-your-first-tech-blog-in-3-steps&quot;&gt;What is github pages and how to create your first tech blog in 3 steps?&lt;/h3&gt;
+&lt;p&gt;Go to Manage Jenkins -&amp;gt; Configure System&lt;/p&gt;
 
-&lt;h3 id=&quot;where-can-i-get-some&quot;&gt;Where can I get some?&lt;/h3&gt;
+&lt;p&gt;Global Pipeline Libraries
+Project repository jenkins-pipeline-libraries&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;This content was copied from http://www.lipsum.com/ as an example of post article.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/pics/jenkins1.png&quot; alt=&quot;Jenkins&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;start-the-seed-job&quot;&gt;Start the seed job&lt;/h2&gt;
+
+&lt;p&gt;The seed job is the only job that you will run manually.
+It should pick up all the jobs from the jenkins-jobs repository and create all the other jobs.&lt;/p&gt;
+
 </description>
         <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/hello-world/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/hello-world/</guid>
+        <link>http://localhost:4000/2018/jenkins-pipelines/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/jenkins-pipelines/</guid>
         
         
       </item>
     
       <item>
-        <title>How to Download or Use This Theme</title>
-        <description>&lt;h3 id=&quot;use-this-theme-as-you-main-site&quot;&gt;Use this theme as you main site&lt;/h3&gt;
+        <title>Terraform/Ansible - provision Jenkins and gitlab</title>
+        <description>&lt;h2 id=&quot;provision-jenkins-and-gitlab&quot;&gt;Provision jenkins and gitlab&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Download or fork the master branch of this theme repo into your GitHub account.&lt;/li&gt;
-  &lt;li&gt;Rename the repo into something like &lt;code class=&quot;highlighter-rouge&quot;&gt;your_username.github.io&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file to your preferences.&lt;/li&gt;
-  &lt;li&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;about.md&lt;/code&gt; file for your About page.&lt;/li&gt;
-  &lt;li&gt;Inside &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder, there are sample of blog entries. Learn from it and start yours.&lt;/li&gt;
-  &lt;li&gt;Now, visit &lt;code class=&quot;highlighter-rouge&quot;&gt;http://your_username.github.io&lt;/code&gt; and you should see your blog running.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;use-this-theme-as-a-project-page&quot;&gt;Use this theme as a project page&lt;/h3&gt;
-
-&lt;p&gt;If you want to use this theme as a project page blog, you don’t need to rename the theme repo into &lt;code class=&quot;highlighter-rouge&quot;&gt;your_username.github.io&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;All you need to do, open &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file, change &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl&lt;/code&gt; to your project name which contains this theme, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl: &quot;/myproject&quot;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;cheers&quot;&gt;Cheers!&lt;/h4&gt;
+&lt;p&gt;Code here:
+https://github.com/raresociopath/provision-jenkins-gitlab&lt;/p&gt;
 </description>
-        <pubDate>Sun, 10 Jun 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/how-to/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/how-to/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>If you have a Guest post..</title>
-        <description>&lt;p&gt;If you think that you’re going to have a guest post… take a look on this post sample. Just add &lt;code class=&quot;highlighter-rouge&quot;&gt;author: GuestName&lt;/code&gt; to the YAML front matter. Then, the &lt;strong&gt;GuestName&lt;/strong&gt; will be appear on the next of post date. Oh, the guest name will be automatically uppercase.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 09 Jun 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/if-you/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/if-you/</guid>
+        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2018/jenkins-gitlab/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/jenkins-gitlab/</guid>
         
         
       </item>
