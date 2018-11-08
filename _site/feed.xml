@@ -5,8 +5,8 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 08 Nov 2018 14:12:23 +0200</pubDate>
-    <lastBuildDate>Thu, 08 Nov 2018 14:12:23 +0200</lastBuildDate>
+    <pubDate>Thu, 08 Nov 2018 14:24:01 +0200</pubDate>
+    <lastBuildDate>Thu, 08 Nov 2018 14:24:01 +0200</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
@@ -231,6 +231,32 @@ bindsym $mod+m bar mode toggle
         
         
         <category>top</category>
+        
+      </item>
+    
+      <item>
+        <title>Not a tech article</title>
+        <description>&lt;p&gt;About different types of projects.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Nov 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/test/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/test/</guid>
+        
+        
+        <category>ntech</category>
+        
+      </item>
+    
+      <item>
+        <title>Project Analysis</title>
+        <description>
+</description>
+        <pubDate>Thu, 08 Nov 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/analysis/</guid>
+        
+        
+        <category>ntech</category>
         
       </item>
     
@@ -729,66 +755,6 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
         <link>http://localhost:4000/2018/devops-tools/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/devops-tools/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>Spin-up a Jenkins instance with Terraform</title>
-        <description>
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/spin-up-jenkins-terraform/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/spin-up-jenkins-terraform/</guid>
-        
-        
-        <category>terraform</category>
-        
-      </item>
-    
-      <item>
-        <title>Jenkins pipelines: Best Practices.</title>
-        <description>&lt;h2 id=&quot;jenkins-driven&quot;&gt;Jenkins Driven&lt;/h2&gt;
-
-&lt;p&gt;Jenkins remains to be the most used CI/CD tool.
-Don’t really remember a company or project where I didn’t have to deal with Jenkins.
-That’s why I’ve decided to leave here some of the best things&lt;/p&gt;
-
-&lt;h2 id=&quot;jenkins-instance&quot;&gt;Jenkins instance&lt;/h2&gt;
-
-&lt;h2 id=&quot;the-jenkins-repos--tjp-&quot;&gt;The Jenkins Repos ( tjp )&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/raresociopath/jenkins-pipeline-library.git&quot;&gt;jenkins-pipeline-library&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/raresociopath/jenkins-jobs.git&quot;&gt;jenkins-jobs&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;mandatory-plugins&quot;&gt;Mandatory plugins:&lt;/h2&gt;
-
-&lt;p&gt;Job Pipeline&lt;/p&gt;
-
-&lt;h2 id=&quot;seed-job&quot;&gt;Seed Job&lt;/h2&gt;
-
-&lt;h2 id=&quot;jenkins-pipeline-library&quot;&gt;Jenkins pipeline library&lt;/h2&gt;
-&lt;p&gt;Import the jenkins-pipeline-library&lt;/p&gt;
-
-&lt;p&gt;Go to Manage Jenkins -&amp;gt; Configure System&lt;/p&gt;
-
-&lt;p&gt;Global Pipeline Libraries
-Project repository jenkins-pipeline-libraries&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/pics/jenkins1.png&quot; alt=&quot;Jenkins&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;start-the-seed-job&quot;&gt;Start the seed job&lt;/h2&gt;
-
-&lt;p&gt;The seed job is the only job that you will run manually.
-It should pick up all the jobs from the jenkins-jobs repository and create all the other jobs.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/jenkins-pipelines/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/jenkins-pipelines/</guid>
-        
-        
-        <category>jenkins</category>
         
       </item>
     
