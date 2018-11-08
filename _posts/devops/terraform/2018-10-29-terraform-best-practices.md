@@ -4,7 +4,7 @@ title: "Terraform/AWS Best practices."
 comments: true
 description: "Terraform best practices"
 keywords: "markdown, typography components, dummy content"
-category: devops
+category: terraform
 ---
 Alright, I'm not gonna write about what Terraform is and why it is great because 
 the official documentation is doing that perfectly.

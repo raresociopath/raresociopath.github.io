@@ -4,7 +4,7 @@ title: "Provisioning Autoscalable EKS with Terraform"
 comments: true
 description: "Ansible architecture"
 keywords: "markdown, typography components, dummy content"
-category: devops
+category: terraform
 ---
 
 Read before proceding:

@@ -4,7 +4,7 @@ title: "Ansible/AWS: Best Practices."
 comments: true
 description: "Ansible architecture"
 keywords: "markdown, typography components, dummy content"
-category: devops
+category: ansible
 ---
 Alright, I'm not gonna write about what Ansible is and why it is great because 
 the official documentation is doing that perfectly.

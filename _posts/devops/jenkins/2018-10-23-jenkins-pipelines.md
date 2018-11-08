@@ -4,7 +4,7 @@ title: "Jenkins pipelines: Best Practices."
 description: "Jenkins cool pipelines"
 comments: true
 keywords: "ansible, devops, tools, automation, system, administration, cloud, aws"
-category: devops
+category: jenkins
 ---
 ## Jenkins Driven 
 
