@@ -1,14 +1,8 @@
 ---
+title: Books
 layout: page
-title: Books 
-permalink: /books/
+permalink: "/books/"
 ---
-
-Here you can find the books that helped me walk on water. :) Yeah yeah, and develop my ego. :P 
-
-
-<div class="divider"></div>
-
 
 ## Linux
 
@@ -93,6 +87,3 @@ Wanna start an IT company? Have a look here.
 2. <a href="../books/hack/wireshark_analysis.pdf">Wireshark Analysis</a>
 3. <a href="../books/hack/wireshark_practical_analysis.pdf">Practical Packet Analysis - using Wireshark ( Chris Sanders )</a>
 4
-
-
- 
