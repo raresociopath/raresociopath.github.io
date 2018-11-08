@@ -1,0 +1,180 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title> i3 window manager | Raresociopath </title> <meta name="description" content=" Just another technical blog "> <meta name="keywords" content="Raresociopath, raresociopath, rare, sociopath, "> <meta name="HandheldFriendly" content="True"> <meta name="MobileOptimized" content="320"> <!-- Social: Facebook / Open Graph --> <meta property="og:type" content="article"> <meta property="article:author" content="Munteanu Ion"> <meta property="article:section" content="top"> <meta property="article:tag" content=""> <meta property="article:published_time" content="2018-11-08 00:00:00 +0200"> <meta property="og:url" content="http://localhost:4000/2018/i3-workspace/"> <meta property="og:title" content=" i3 window manager | Raresociopath "> <meta property="og:image" content="http://localhost:4000"> <meta property="og:description" content=" Just another technical blog "> <meta property="og:site_name" content="Munteanu Ion"> <meta property="og:locale" content="en_US"> <!-- Social: Twitter --> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:site" content=""> <meta name="twitter:title" content=" i3 window manager | Raresociopath "> <meta name="twitter:description" content=" Just another technical blog "> <meta name="twitter:image:src" content="http://localhost:4000"> <!-- Social: Google+ / Schema.org --> <meta itemprop="name" content=" i3 window manager | Raresociopath "> <meta itemprop="description" content=" Just another technical blog "> <meta itemprop="image" content="http://localhost:4000"> <!-- Canonical link tag --> <link rel="canonical" href="http://localhost:4000/2018/i3-workspace/"> <link rel="alternate" type="application/rss+xml" title="Raresociopath" href="http://localhost:4000/feed.xml"> <!-- rel prev and next --> <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css"> </head> <body> <main class="wrapper"> <header class="site-header"> <nav class="nav"> <div class="container"> <h1 class="logo"><a href="http://localhost:4000/">Rare<span>sociopath</span></a></h1> <ul class="navbar"> <li><a href="http://localhost:4000/">Articles</a></li> <li><a href="http://localhost:4000/about">About me</a></li> <li><a href="http://localhost:4000/books">Books</a></li> </ul> </div> </nav> </header> <article class="post container" itemscope itemtype="http://schema.org/BlogPosting"> <header class="post-header"> <p class="post-meta"><time datetime="2018-11-08T00:00:00+02:00" itemprop="datePublished">Nov 8, 2018</time></p> <h1 class="post-title" itemprop="name headline">i3 window manager</h1> </header> <div class="post-content" itemprop="articleBody"> <p>i3 workspace manager ( i3wm)</p> <h1 id="why-i3">Why i3?</h1> <p>For more than 7 years i’ve been using this very light workspace manager that worked just perfect for everything I needed.</p> <p><strong>Before using i3</strong> You should realize the follow:</p> <ul> <li>You love shortcuts.</li> <li>You can do everything without using the mouse.</li> <li>You love multiple windows on the same screen.</li> </ul> <h1 id="installation">Installation</h1> <p>dnf install i3 i3lock</p> <h1 id="my-configurations">My configurations</h1> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#i3 config ( raresociopath )
+
+#-----------------------------------
+
+#mod
+set $mod Mod4
+
+#font
+font pango:DejaVu Sans Mono 8
+
+#floating_modifier
+floating_modifier $mod
+
+#-----------------------------------
+#Shortcuts
+
+# TODO:init
+# Start script for creating folder hierarchy
+# install the stuff
+# run crons
+# bindsym $mod+Shift+Alt+i 
+
+# start terminator
+bindsym $mod+Return exec terminator -l raresociopath -p raresociopath
+bindsym $mod+Shift+t exec terminator
+
+
+# start Google Chrome
+bindsym $mod+Shift+g exec google-chrome
+
+# start Firefox 
+bindsym $mod+Shift+f exec firefox 
+
+# start Nautilus
+bindsym $mod+Shift+n exec nautilus 
+
+# start WireShark
+#bindsym $mod+Shift+n exec wireshark 
+
+# change backroung
+bindsym $mod+Shift+x exec --no-startup-id "/usr/bin/feh --bg-scale ~/yin/configs/i3wm/background/3.jpg"
+
+# black bacground
+bindsym $mod+Shift+u exec --no-startup-id "/usr/bin/feh --bg-scale ~/yin/configs/i3wm/background/6.jpg"
+
+#lock
+bindsym $mod+Shift+0 exec i3lock --color 000000 
+
+#-----------------------------------
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+
+# exec --no-startup-id xsetroot -solid "#000000"
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+Ctrl+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+#bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# class                 border  backgr. text    indicator
+client.focused          #545454 #757575 #ffffff #000000
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused        #333333 #222222 #888888 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+# status bar
+bar {
+        status_command i3blocks
+
+}
+new_window 1pixel
+
+# bar toggle, hide or show 
+bindsym $mod+m bar mode toggle
+
+</code></pre></div></div> <h1 id="i3blocks">i3blocks</h1> </div> </article> <footer class="site-footer"> <div class="container"> <small class="block"> &copy; 2018 Munteanu Ion <a href="https://github.com/raresociopath">Github</a> <a href="#">Download CV</a> </small> </div> </footer> </main> <script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-XXXXX-XX']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script> </body> </html>
