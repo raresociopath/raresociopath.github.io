@@ -5,9 +5,39 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 08 Nov 2018 16:55:20 +0200</pubDate>
-    <lastBuildDate>Thu, 08 Nov 2018 16:55:20 +0200</lastBuildDate>
+    <pubDate>Fri, 09 Nov 2018 17:39:04 +0200</pubDate>
+    <lastBuildDate>Fri, 09 Nov 2018 17:39:04 +0200</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
+    
+      <item>
+        <title>Ansible local configuration</title>
+        <description>
+</description>
+        <pubDate>Fri, 09 Nov 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/local-ansible/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/local-ansible/</guid>
+        
+        
+        <category>top</category>
+        
+      </item>
+    
+      <item>
+        <title>Inside an Organization</title>
+        <description>&lt;p&gt;An an open organization, leaders must be sensitive to nuances—knowing how to share and how to invite collaboration in
+ways that keep an organization from dissolving into chaos. A
+leader’s mandate to help people do their best work involves not
+just an understanding of leadership capabilities like connection,
+trust, and transparency, but also a certain familiarity with—and
+sensitivity to—the feelings, emotions, and passions of the people
+that leader is trying to help.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 09 Nov 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/inside/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/inside/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Android Programming</title>
@@ -236,11 +266,73 @@ bindsym $mod+m bar mode toggle
     
       <item>
         <title>Not a tech article</title>
-        <description>&lt;p&gt;About different types of projects.&lt;/p&gt;
+        <description>&lt;h1 id=&quot;before-tech&quot;&gt;Before tech&lt;/h1&gt;
+
+&lt;p&gt;Before implementing something you should first understand on what kind of project you’re gonna work.
+In my experience I’ve managed to delimit a couple of types.&lt;/p&gt;
+
+&lt;p&gt;1) The enterprise project
+2) The start-up project
+3) The personal project 
+4) The internal project&lt;/p&gt;
+
+&lt;p&gt;Each project type is different and requires different type of thinking and analysis.&lt;/p&gt;
+
+&lt;p&gt;Let’s start with the ** ENTERPRISE PROJECT **&lt;/p&gt;
 </description>
         <pubDate>Thu, 08 Nov 2018 00:00:00 +0200</pubDate>
         <link>http://localhost:4000/2018/test/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/test/</guid>
+        
+        
+        <category>ntech</category>
+        
+      </item>
+    
+      <item>
+        <title>The start-up project</title>
+        <description>&lt;h1 id=&quot;the-start-up-project&quot;&gt;The start-up project&lt;/h1&gt;
+
+&lt;p&gt;Before implementing something you should first understand on what kind of project you’re gonna work.
+In my experience I’ve managed to delimit a couple of types.&lt;/p&gt;
+
+&lt;p&gt;1) The enterprise project
+2) The start-up project
+3) The personal project 
+4) The internal project&lt;/p&gt;
+
+&lt;p&gt;Each project type is different and requires different type of thinking and analysis.&lt;/p&gt;
+
+&lt;p&gt;Let’s start with the ** ENTERPRISE PROJECT **&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Nov 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/startup/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/startup/</guid>
+        
+        
+        <category>ntech</category>
+        
+      </item>
+    
+      <item>
+        <title>The enterprise project</title>
+        <description>&lt;h1 id=&quot;the-start-up-project&quot;&gt;The start-up project&lt;/h1&gt;
+
+&lt;p&gt;Before implementing something you should first understand on what kind of project you’re gonna work.
+In my experience I’ve managed to delimit a couple of types.&lt;/p&gt;
+
+&lt;p&gt;1) The enterprise project
+2) The start-up project
+3) The personal project 
+4) The internal project&lt;/p&gt;
+
+&lt;p&gt;Each project type is different and requires different type of thinking and analysis.&lt;/p&gt;
+
+&lt;p&gt;Let’s start with the ** ENTERPRISE PROJECT **&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Nov 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/enterprise-project/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/enterprise-project/</guid>
         
         
         <category>ntech</category>
@@ -486,275 +578,6 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
         
         
         <category>terraform</category>
-        
-      </item>
-    
-      <item>
-        <title>Provisioning k8s cluster with Ansible and Kops on AWS</title>
-        <description>&lt;p&gt;Read before proceding:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot; target=&quot;_blank&quot;&gt; What is ansible&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/&quot; target=&quot;_blank&quot;&gt; What is kubernetes &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/kubernetes/kops/blob/master/README.md&quot; target=&quot;_blank&quot;&gt;What is Kops &lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;So, we are gonna write ansible scripts to provision k8s with the help of kops.&lt;/p&gt;
-
-&lt;p&gt;The code is &lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt; here &lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;k8s-ansible/
-├── ansible.cfg
-├── cluster.conf.d
-├── create-cluster.yaml
-├── delete-cluster.yaml
-├── group_vars
-├── inventory
-├── kops-clusters
-├── README.md
-├── roles
-├── utils
-└── validate-cluster.yaml
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;create-cluster&quot;&gt;Create cluster&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-- include_role:
-    name: base
-
-- name: &quot;Create cluster &quot;
-  shell: &amp;gt;
-    kops create cluster 
-    --cloud-labels=&quot;Team=MyTeam&quot;
-    --admin-access=&amp;lt;to be changed&amp;gt;/32
-    --kubernetes-version=
-    --zones=
-    --dns-zone=
-    --master-count=
-    --master-size=
-    --master-volume-size=
-    --cloud=aws
-    --output yaml
-    --state=s3://
-    --node-size=
-    --node-count=
-    --node-volume-size=
-    --topology=public
-    --encrypt-etcd-storage
-    --networking=canal
-- name: &quot;Apply extra confs on cluster&quot;
-  shell: &amp;gt;
-    ./utils/genClusterConfig.py
-    --cluster-name=
-    --cluster-state=s3://
-    --conf-path=cluster.conf.d
-    --output=./tmp-.yaml
-    &amp;amp;&amp;amp;
-    kops replace --name  --state=s3:// -f ./tmp-.yaml
-    &amp;amp;&amp;amp;
-    rm -f ./tmp-.yaml
-- name: &quot;Apply extra confs on nodes&quot;
-  shell: &amp;gt;
-    ./utils/genClusterConfig.py
-    --cluster-name=
-    --cluster-state=s3://
-    --conf-path=nodes.conf.d
-    --component=ig
-    --output=./tmp--nodes.yaml
-    &amp;amp;&amp;amp;
-    kops replace --name  --state=s3:// -f ./tmp--nodes.yaml
-    &amp;amp;&amp;amp;
-    rm -f ./tmp--nodes.yaml
-- name: &quot;Apply extra confs on master&quot;
-  shell: &amp;gt;
-    ./utils/genClusterConfig.py
-    --cluster-name=
-    --cluster-state=s3://
-    --conf-path=master.conf.d
-    --component=master-
-    --output=./tmp--master-.yaml
-    &amp;amp;&amp;amp;
-    kops replace --name  --state=s3:// -f ./tmp--master-.yaml
-    &amp;amp;&amp;amp;
-    rm -f ./tmp--master-.yaml
-  with_items: &quot;&quot;
-  loop_control:
-    index_var: index
-  when: index &amp;lt; master_count
-
-- name: &quot;Apply plan creation for cluster &quot;
-  shell: &amp;gt;
-    kops update cluster
-    --name 
-    --state=s3://
-    --yes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For a full example follow this link:
-&lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/k8s-cluster/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/k8s-cluster/</guid>
-        
-        
-        <category>ansible</category>
-        
-      </item>
-    
-      <item>
-        <title>Ansible/AWS: Best Practices.</title>
-        <description>&lt;p&gt;Alright, I’m not gonna write about what Ansible is and why it is great because 
-the official documentation is doing that perfectly.&lt;/p&gt;
-
-&lt;p&gt;Instead, I’m going to leave here a couple of notes about best practices using Ansible with AWS.&lt;/p&gt;
-
-&lt;p&gt;So, If you don’t know what Ansible is and what it is used for please follow this link first:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot;&gt;Official Ansible documentation&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;ansible-directory-layout-that-always-worked-for-me&quot;&gt;Ansible Directory layout that always worked for me&lt;/h2&gt;
-
-&lt;p&gt;If you are struggling with finding a good layout that will fit your project
-here are a couple of blueprints.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Keep Ansible layout as simple as possible.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;An example that just works perfectly.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible/
-├── inventories 
-├── playbooks
-└── README.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Do not use project specific names in naming ansible directories.
-We want Ansible scripts to be flexible.
-Jenkins and so on.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;what-next&quot;&gt;What next?&lt;/h1&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── inventories
-│   └── aws
-│       ├── ec2.ini
-│       ├── ec2.py
-│       └── group_vars # variables for particular groups
-├── playbooks
-│   ├── files # files needed by some roles
-│   │   ├── ssh_keys
-│   │   └── ...
-│   ├── roles
-│   │   ├── base
-│   │   ├── java
-│   │   └── ...
-│   ├── setup_base.yaml
-│   └── setup.yaml # master playbook 
-└── README.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;dynamic-inventories&quot;&gt;Dynamic inventories&lt;/h1&gt;
-
-&lt;p&gt;AWS infrastructure is dynamic and so should be your scripts. You should never worry about the change of IP’s that’s why I recommend the use of dynamic inventories and good groupings.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;inventories/aws/
-├── ec2.ini
-├── ec2.py
-└── group_vars
-    ├── all # Project variables
-    ├── tag_env_dev  # Dev environment variables
-    └── tag_env_prod # Prod environment variables
-
-# Inside tag_env_dev
-
-tag_Env_dev/
-├── vars.yaml
-└── vault.yaml
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;More about dynamic inventories &lt;a href=&quot;https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script&quot; target=&quot;_blank&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;master-playbook--master-&quot;&gt;Master playbook ( master )&lt;/h2&gt;
-
-&lt;p&gt;setup.yml is the entry point (master) playbook of your ansible scripts, 
-that’s why it should be as clean as possible.
-Try to only import plays in here.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-- import_playbook: setup_base.yaml
-- import_playbook: setup_redis.yaml
-...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;tags&quot;&gt;TAGS&lt;/h2&gt;
-&lt;p&gt;A very important part of the ansible playbooks is tags.
-My recomendations is not to use tags in roles.
-I use tags only in the high level playbooks and the dynamic inventory tags.&lt;/p&gt;
-
-&lt;h2 id=&quot;running-ansible-scripts-tagging&quot;&gt;Running ansible scripts. Tagging&lt;/h2&gt;
-&lt;p&gt;This command should do everything.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible-playbook -i inventories/aws playbooks/setup.yaml
-ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=base
-ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For a full example follow this link:
-&lt;a href=&quot;https://github.com/raresociopath/ansible-layout-example&quot; target=&quot;_blank&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/ansible-arch/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/ansible-arch/</guid>
-        
-        
-        <category>ansible</category>
-        
-      </item>
-    
-      <item>
-        <title>Spring Boot | Microservices architecture</title>
-        <description>&lt;p&gt;Tools&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;PAC or Asbru&lt;/li&gt;
-  &lt;li&gt;Portainer&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/spring-boot/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/spring-boot/</guid>
-        
-        
-        <category>prog</category>
-        
-      </item>
-    
-      <item>
-        <title>Tools to ease up server management</title>
-        <description>&lt;p&gt;Tools&lt;/p&gt;
-
-&lt;h1 id=&quot;server-management&quot;&gt;&lt;strong&gt;Server management&lt;/strong&gt;&lt;/h1&gt;
-&lt;ol&gt;
-  &lt;li&gt;PAC or Asbru&lt;/li&gt;
-  &lt;li&gt;Portainer&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Tue, 23 Oct 2018 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2018/devops-tools/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/devops-tools/</guid>
-        
         
       </item>
     
