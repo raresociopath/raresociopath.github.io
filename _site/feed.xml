@@ -5,9 +5,22 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Nov 2018 17:39:04 +0200</pubDate>
-    <lastBuildDate>Fri, 09 Nov 2018 17:39:04 +0200</lastBuildDate>
+    <pubDate>Mon, 12 Nov 2018 16:00:50 +0200</pubDate>
+    <lastBuildDate>Mon, 12 Nov 2018 16:00:50 +0200</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
+    
+      <item>
+        <title>Hacking git</title>
+        <description>&lt;p&gt;git&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Nov 2018 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2018/hacking-git/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/hacking-git/</guid>
+        
+        
+        <category>top</category>
+        
+      </item>
     
       <item>
         <title>Ansible local configuration</title>
@@ -459,122 +472,6 @@ ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
         <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
         <link>http://localhost:4000/2018/terraform-best-practices/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/terraform-best-practices/</guid>
-        
-        
-        <category>terraform</category>
-        
-      </item>
-    
-      <item>
-        <title>Provisioning Autoscalable EKS with Terraform</title>
-        <description>&lt;p&gt;Read before proceding:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot; target=&quot;_blank&quot;&gt; What is ansible&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/&quot; target=&quot;_blank&quot;&gt; What is kubernetes &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/kubernetes/kops/blob/master/README.md&quot; target=&quot;_blank&quot;&gt;What is Kops &lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;So, we are gonna write ansible scripts to provision k8s with the help of kops.&lt;/p&gt;
-
-&lt;p&gt;The code is &lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt; here &lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;k8s-ansible/
-├── ansible.cfg
-├── cluster.conf.d
-├── create-cluster.yaml
-├── delete-cluster.yaml
-├── group_vars
-├── inventory
-├── kops-clusters
-├── README.md
-├── roles
-├── utils
-└── validate-cluster.yaml
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;create-cluster&quot;&gt;Create cluster&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-- include_role:
-    name: base
-
-- name: &quot;Create cluster &quot;
-  shell: &amp;gt;
-    kops create cluster 
-    --cloud-labels=&quot;Team=MyTeam&quot;
-    --admin-access=&amp;lt;to be changed&amp;gt;/32
-    --kubernetes-version=
-    --zones=
-    --dns-zone=
-    --master-count=
-    --master-size=
-    --master-volume-size=
-    --cloud=aws
-    --output yaml
-    --state=s3://
-    --node-size=
-    --node-count=
-    --node-volume-size=
-    --topology=public
-    --encrypt-etcd-storage
-    --networking=canal
-- name: &quot;Apply extra confs on cluster&quot;
-  shell: &amp;gt;
-    ./utils/genClusterConfig.py
-    --cluster-name=
-    --cluster-state=s3://
-    --conf-path=cluster.conf.d
-    --output=./tmp-.yaml
-    &amp;amp;&amp;amp;
-    kops replace --name  --state=s3:// -f ./tmp-.yaml
-    &amp;amp;&amp;amp;
-    rm -f ./tmp-.yaml
-- name: &quot;Apply extra confs on nodes&quot;
-  shell: &amp;gt;
-    ./utils/genClusterConfig.py
-    --cluster-name=
-    --cluster-state=s3://
-    --conf-path=nodes.conf.d
-    --component=ig
-    --output=./tmp--nodes.yaml
-    &amp;amp;&amp;amp;
-    kops replace --name  --state=s3:// -f ./tmp--nodes.yaml
-    &amp;amp;&amp;amp;
-    rm -f ./tmp--nodes.yaml
-- name: &quot;Apply extra confs on master&quot;
-  shell: &amp;gt;
-    ./utils/genClusterConfig.py
-    --cluster-name=
-    --cluster-state=s3://
-    --conf-path=master.conf.d
-    --component=master-
-    --output=./tmp--master-.yaml
-    &amp;amp;&amp;amp;
-    kops replace --name  --state=s3:// -f ./tmp--master-.yaml
-    &amp;amp;&amp;amp;
-    rm -f ./tmp--master-.yaml
-  with_items: &quot;&quot;
-  loop_control:
-    index_var: index
-  when: index &amp;lt; master_count
-
-- name: &quot;Apply plan creation for cluster &quot;
-  shell: &amp;gt;
-    kops update cluster
-    --name 
-    --state=s3://
-    --yes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For a full example follow this link:
-&lt;a href=&quot;https://github.com/raresociopath/k8s-ansible&quot; target=&quot;_blank&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/eks-terraform/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/eks-terraform/</guid>
         
         
         <category>terraform</category>
