@@ -5,9 +5,87 @@
     <description>Just another technical blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 12 Nov 2018 16:00:50 +0200</pubDate>
-    <lastBuildDate>Mon, 12 Nov 2018 16:00:50 +0200</lastBuildDate>
+    <pubDate>Sat, 05 Jan 2019 00:27:17 +0200</pubDate>
+    <lastBuildDate>Sat, 05 Jan 2019 00:27:17 +0200</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
+    
+      <item>
+        <title>Building Restful API with golang and MongoDB.</title>
+        <description>
+</description>
+        <pubDate>Wed, 01 May 2019 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2019/go-rest-mongo/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/go-rest-mongo/</guid>
+        
+        
+        <category>prog</category>
+        
+      </item>
+    
+      <item>
+        <title>Tools that will always be on my desktop.</title>
+        <description>&lt;p&gt;Tools that will never miss from my desktop.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;i3 workspace manager, i3lock, i3blocks&lt;/li&gt;
+  &lt;li&gt;Asbru-cm&lt;/li&gt;
+  &lt;li&gt;Ansible&lt;/li&gt;
+  &lt;li&gt;Terraform&lt;/li&gt;
+  &lt;li&gt;kubectl&lt;/li&gt;
+  &lt;li&gt;aws-cli&lt;/li&gt;
+  &lt;li&gt;vim&lt;/li&gt;
+  &lt;li&gt;Eclipse&lt;/li&gt;
+  &lt;li&gt;go&lt;/li&gt;
+  &lt;li&gt;terminator&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sat, 05 Jan 2019 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2019/tools/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/tools/</guid>
+        
+        
+        <category>top</category>
+        
+      </item>
+    
+      <item>
+        <title>I Choose Fedora!</title>
+        <description>&lt;p&gt;First question I get from developers, devops and architects is what distribution of linux I’m using on my desktop.
+Well, there is one and only distribution I used for more than 8 years and will use in the future, 
+and that distribution is FEDORA.&lt;/p&gt;
+
+&lt;p&gt;Why?&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Because it never failed.&lt;/li&gt;
+  &lt;li&gt;Because I worked for RedHat.&lt;/li&gt;
+  &lt;li&gt;Fedora kernel upgrade is more frequent so you get the latest technology to work with.&lt;/li&gt;
+  &lt;li&gt;Fedora releases are rock solid and never came across of any issues.&lt;/li&gt;
+  &lt;li&gt;I am a Certified Red Hat Engineer and am most comfortable with rhel/fedora.&lt;/li&gt;
+  &lt;li&gt;Because I personally know the developers that work on the distribution and I can tell you that they are hell of a developers.
+7.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sat, 05 Jan 2019 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2019/i-choose-fedora/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/i-choose-fedora/</guid>
+        
+        
+        <category>top</category>
+        
+      </item>
+    
+      <item>
+        <title>Jenkins Best Practices</title>
+        <description>
+</description>
+        <pubDate>Sat, 05 Jan 2019 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/2019/jenkins-pipelines/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/jenkins-pipelines/</guid>
+        
+        
+        <category>jenkins</category>
+        
+      </item>
     
       <item>
         <title>Hacking git</title>
@@ -16,19 +94,6 @@
         <pubDate>Mon, 12 Nov 2018 00:00:00 +0200</pubDate>
         <link>http://localhost:4000/2018/hacking-git/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/hacking-git/</guid>
-        
-        
-        <category>top</category>
-        
-      </item>
-    
-      <item>
-        <title>Ansible local configuration</title>
-        <description>
-</description>
-        <pubDate>Fri, 09 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/local-ansible/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/local-ansible/</guid>
         
         
         <category>top</category>
@@ -324,157 +389,6 @@ In my experience I’ve managed to delimit a couple of types.&lt;/p&gt;
         
         
         <category>ntech</category>
-        
-      </item>
-    
-      <item>
-        <title>The enterprise project</title>
-        <description>&lt;h1 id=&quot;the-start-up-project&quot;&gt;The start-up project&lt;/h1&gt;
-
-&lt;p&gt;Before implementing something you should first understand on what kind of project you’re gonna work.
-In my experience I’ve managed to delimit a couple of types.&lt;/p&gt;
-
-&lt;p&gt;1) The enterprise project
-2) The start-up project
-3) The personal project 
-4) The internal project&lt;/p&gt;
-
-&lt;p&gt;Each project type is different and requires different type of thinking and analysis.&lt;/p&gt;
-
-&lt;p&gt;Let’s start with the ** ENTERPRISE PROJECT **&lt;/p&gt;
-</description>
-        <pubDate>Thu, 08 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/enterprise-project/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/enterprise-project/</guid>
-        
-        
-        <category>ntech</category>
-        
-      </item>
-    
-      <item>
-        <title>Project Analysis</title>
-        <description>
-</description>
-        <pubDate>Thu, 08 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/analysis/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/analysis/</guid>
-        
-        
-        <category>ntech</category>
-        
-      </item>
-    
-      <item>
-        <title>Terraform/AWS Best practices.</title>
-        <description>&lt;p&gt;Alright, I’m not gonna write about what Terraform is and why it is great because 
-the official documentation is doing that perfectly.&lt;/p&gt;
-
-&lt;p&gt;Instead, I’m going to leave here a couple of notes about best practices using Ansible with AWS.&lt;/p&gt;
-
-&lt;p&gt;So, If you don’t know what Ansible is and what it is used for please follow this link first:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.ansible.com/ansible/latest/index.html&quot;&gt;Official Ansible documentation&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;my-ansible-layout&quot;&gt;My Ansible layout&lt;/h2&gt;
-
-&lt;p&gt;If you are struggling with finding a good layout that will fit your project
-here are a couple of blueprints.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Keep Ansible layout as simple as possible.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;An example that just works perfectly.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible/
-├── inventories
-├── playbooks
-└── README.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Do not use project specific names in naming ansible directories.
-We want Ansible scripts to be flexible.
-Jenkins and so on.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;what-next&quot;&gt;What next?&lt;/h1&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── inventories
-│   └── aws
-│       ├── ec2.ini
-│       ├── ec2.py
-│       └── group_vars
-├── playbooks
-│   ├── files
-│   │   ├── ssh_keys
-│   │   └── ...
-│   ├── roles
-│   │   ├── base
-│   │   ├── java
-│   │   └── ...
-│   ├── setup_base.yaml
-│   └── setup.yaml
-└── README.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;dynamic-inventories&quot;&gt;Dynamic inventories&lt;/h1&gt;
-
-&lt;p&gt;AWS infrastructure is dynamic and so should be your scripts. You should never worry about the change of IP’s that’s why I recommend the use of dynamic inventories and good groupings.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;inventories/aws/
-├── ec2.ini
-├── ec2.py
-└── group_vars
-    ├── all # Project variables
-    ├── tag_env_dev  # Dev environment variables
-    └── tag_env_prod # Prod environment variables
-
-# Inside tag_env_dev
-
-tag_Env_dev/
-├── vars.yaml
-└── vault.yaml
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;More about dynamic inventories &lt;a href=&quot;https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script&quot; target=&quot;_blank&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;entry-point&quot;&gt;Entry point&lt;/h2&gt;
-
-&lt;p&gt;setup.yml is the entry point of your ansible scripts, 
-that’s why it should be as clean as possible.
-Try to only import plays in here.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-- import_playbook: setup_base.yaml
-- import_playbook: setup_redis.yaml
-...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;running-ansible-scripts-tagging&quot;&gt;Running ansible scripts. Tagging&lt;/h2&gt;
-&lt;p&gt;This command should do everything.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ansible-playbook -i inventories/aws playbooks/setup.yaml
-ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=base
-ansible-playbook -i inventories/aws playbooks/setup.yaml --tags=authorized_keys
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For a full example follow this link:
-&lt;a href=&quot;https://github.com/raresociopath/ansible-layout-example&quot;&gt;Full example&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 29 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2018/terraform-best-practices/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/terraform-best-practices/</guid>
-        
-        
-        <category>terraform</category>
         
       </item>
     
