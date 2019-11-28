@@ -3,11 +3,21 @@ entries:
   example:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2019-11-28T14:00:16.892458112+02:00
+    created: 2019-11-28T14:20:37.870204019+02:00
     description: A Helm chart for Kubernetes
     digest: e98f7531236095fb40f1e97e2639a0156d6e3ed8cc684e257865c46675f95edb
     name: example
     urls:
     - example-0.1.0.tgz
     version: 0.1.0
-generated: 2019-11-28T14:00:16.892172066+02:00
+  rs-hello-world:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2019-11-28T14:20:37.870433482+02:00
+    description: A Helm chart for Kubernetes
+    digest: 1bca175398f8647838dcdf1d7aaa08d9d558deea0734a8dba18cf8627fef5f66
+    name: rs-hello-world
+    urls:
+    - rs-hello-world-0.1.0.tgz
+    version: 0.1.0
+generated: 2019-11-28T14:20:37.869911393+02:00
